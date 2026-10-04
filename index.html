@@ -3,319 +3,1136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yosef Gebisa — Developer</title>
+
+  <title>Yosef Gebisa — Frontend & Backend Developer</title>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/projects.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Hero improvements -->
+  <style>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 20px 70px;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 17px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(100, 120, 255, 0.3);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #cfd5ff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #55e6a5;
+      box-shadow: 0 0 12px #55e6a5;
+    }
+
+    /* Small professional profile photo */
+    .hero-image {
+      width: 145px;
+      height: 145px;
+      margin: 0 auto 25px;
+      padding: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6c63ff, #00d9ff);
+      box-shadow: 0 15px 45px rgba(70, 90, 255, 0.28);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #0b0d17;
+    }
+
+    .hero-name {
+      margin: 0;
+      font-size: clamp(55px, 9vw, 105px);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      font-weight: 900;
+    }
+
+    .hero-name span {
+      background: linear-gradient(90deg, #7c6cff, #00d9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-role {
+      margin: 25px 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      color: #d9dcff;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .role-line {
+      width: 45px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #6c63ff);
+    }
+
+    .hero-bio {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #9da3b8;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .soc {
+      width: 43px;
+      height: 43px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #cbd0e5;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.035);
+      transition: 0.3s ease;
+    }
+
+    .soc:hover {
+      transform: translateY(-4px);
+      color: white;
+      border-color: #6c63ff;
+      background: rgba(108, 99, 255, 0.15);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      color: #777e96;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* About improvements */
+    .about-bio {
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 105px 18px 65px;
+      }
+
+      .hero-image {
+        width: 115px;
+        height: 115px;
+        margin-bottom: 22px;
+      }
+
+      .hero-name {
+        font-size: 55px;
+        letter-spacing: -3px;
+      }
+
+      .hero-role {
+        font-size: 14px;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .role-line {
+        width: 25px;
+      }
+
+      .hero-bio {
+        font-size: 14px;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- ================= NAVBAR ================= -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#home" class="nav-logo">YG<span>.</span></a>
+
+      <a href="#home" class="nav-logo">
+        YG<span>.</span>
+      </a>
+
       <ul class="nav-links" id="nav-links">
-        <li><a href="#home"     class="nav-link active">Home</a></li>
-        <li><a href="#about"    class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact"  class="nav-link">Contact</a></li>
+        <li>
+          <a href="#home" class="nav-link active">Home</a>
+        </li>
+
+        <li>
+          <a href="#about" class="nav-link">About</a>
+        </li>
+
+        <li>
+          <a href="#projects" class="nav-link">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact" class="nav-link">Contact</a>
+        </li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
+
+  <!-- ================= HERO ================= -->
   <section class="hero" id="home">
+
     <div class="hero-noise"></div>
     <div class="hero-glow g1"></div>
     <div class="hero-glow g2"></div>
 
     <div class="hero-inner">
-      <div class="hero-badge"><span class="dot"></span> Available for work</div>
-      <div class="hero-image">
-      <img src="assets/profile.jpg" alt="Yosef Gebisa">
-    </div
 
+      <!-- Availability -->
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Open to Internship Opportunities
+      </div>
+
+
+      <!-- Profile Image -->
+      <div class="hero-image">
+        <img
+          src="assets/profile.jpg"
+          alt="Yosef Gebisa"
+        />
+      </div>
+
+
+      <!-- Name -->
       <h1 class="hero-name">
-        Yosef<br /><span>Gebisa</span>
+        Yosef<br />
+        <span>Gebisa</span>
       </h1>
 
+
+      <!-- Professional Role -->
       <p class="hero-role">
         <span class="role-line"></span>
-        Full Stack Developer
+
+        Frontend Developer | Backend Developer
+
         <span class="role-line"></span>
       </p>
 
+
+      <!-- Bio -->
       <p class="hero-bio">
-        I build web applications that solve real problems —
-        fast, clean, and built to last. Based in Ethiopia.
+        Software Engineering student at Bule Hora University,
+        building modern, responsive, and practical web applications
+        that solve real-world problems.
       </p>
 
+
+      <!-- Buttons -->
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">See My Work</a>
-        <a href="#contact"  class="btn btn-ghost">Let's Talk</a>
+
+        <a
+          href="#projects"
+          class="btn btn-primary"
+        >
+          <i class="fas fa-code"></i>
+          View My Projects
+        </a>
+
+        <a
+          href="#contact"
+          class="btn btn-ghost"
+        >
+          <i class="fas fa-envelope"></i>
+          Contact Me
+        </a>
+
       </div>
 
+
+      <!-- Social Links -->
       <div class="hero-socials">
-        <a href="https://github.com/josephgebisa933-ship-it" target="_blank" rel="noopener" class="soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="#" class="soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:josephgebisa933@gmail.com" class="soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
+
+        <a
+          href="https://github.com/josephgebisa933-ship-it"
+          target="_blank"
+          rel="noopener"
+          class="soc"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a
+          href="mailto:josephgebisa933@gmail.com"
+          class="soc"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
       </div>
+
     </div>
 
+
+    <!-- Scroll -->
     <div class="hero-scroll-hint">
-      <span>Scroll</span>
+      <span>Explore</span>
       <i class="fas fa-arrow-down"></i>
     </div>
+
   </section>
 
-  <!-- ===== ABOUT ===== -->
+
+  <!-- ================= ABOUT ================= -->
   <section class="about" id="about">
+
     <div class="container">
+
       <div class="about-grid">
 
+        <!-- About Text -->
         <div class="about-left">
-          <p class="label">About Me</p>
-          <h2>Developer &amp;<br />Problem Solver</h2>
-          <p class="about-bio">
-            I'm a full stack developer passionate about building web solutions that make a difference.
-            From housing platforms to school systems and clinic management — I build software that
-            serves real communities in Ethiopia and beyond.
+
+          <p class="label">
+            About Me
           </p>
-          <a href="#" class="btn btn-primary" download>
-            <i class="fas fa-download"></i> Download CV
+
+          <h2>
+            Software Engineering
+            <br />
+            Student &amp; Developer
+          </h2>
+
+          <p class="about-bio">
+            I'm a Software Engineering student at Bule Hora University
+            interested in building practical and modern web solutions.
+            I work with frontend and backend technologies to create
+            applications that address real-world problems.
+          </p>
+
+          <!-- No fake CV link -->
+          <a
+            href="#contact"
+            class="btn btn-primary"
+          >
+            <i class="fas fa-envelope"></i>
+            Contact Me
           </a>
+
         </div>
 
+
+        <!-- About Stats -->
         <div class="about-right">
+
           <div class="stats-grid">
+
             <div class="stat">
-              <span class="stat-n">3</span>
-              <span class="stat-l">Projects</span>
+              <span class="stat-n">
+                3
+              </span>
+
+              <span class="stat-l">
+                Projects
+              </span>
             </div>
+
+
             <div class="stat">
-              <span class="stat-n">2+</span>
-              <span class="stat-l">Years</span>
+              <span class="stat-n">
+                SE
+              </span>
+
+              <span class="stat-l">
+                Student
+              </span>
             </div>
+
+
             <div class="stat">
-              <span class="stat-n">5+</span>
-              <span class="stat-l">Technologies</span>
+              <span class="stat-n">
+                8+
+              </span>
+
+              <span class="stat-l">
+                Technologies
+              </span>
             </div>
+
+
             <div class="stat">
-              <span class="stat-n">ET</span>
-              <span class="stat-l">Ethiopia</span>
+              <span class="stat-n">
+                ET
+              </span>
+
+              <span class="stat-l">
+                Ethiopia
+              </span>
             </div>
+
           </div>
 
+
+          <!-- Tech Stack -->
           <div class="tech-stack">
-            <p class="stack-label">Tech Stack</p>
+
+            <p class="stack-label">
+              Tech Stack
+            </p>
+
             <div class="stack-pills">
-              <span><i class="fab fa-react"></i> React</span>
-              <span><i class="fab fa-node-js"></i> Node.js</span>
-              <span><i class="fas fa-database"></i> MySQL</span>
-              <span><i class="fab fa-js"></i> JavaScript</span>
-              <span><i class="fab fa-php"></i> PHP</span>
-              <span><i class="fab fa-git-alt"></i> Git</span>
-              <span><i class="fab fa-html5"></i> HTML5</span>
-              <span><i class="fab fa-css3-alt"></i> CSS3</span>
+
+              <span>
+                <i class="fab fa-react"></i>
+                React
+              </span>
+
+              <span>
+                <i class="fab fa-node-js"></i>
+                Node.js
+              </span>
+
+              <span>
+                <i class="fas fa-database"></i>
+                MySQL
+              </span>
+
+              <span>
+                <i class="fab fa-js"></i>
+                JavaScript
+              </span>
+
+              <span>
+                <i class="fab fa-php"></i>
+                PHP
+              </span>
+
+              <span>
+                <i class="fab fa-git-alt"></i>
+                Git
+              </span>
+
+              <span>
+                <i class="fab fa-html5"></i>
+                HTML5
+              </span>
+
+              <span>
+                <i class="fab fa-css3-alt"></i>
+                CSS3
+              </span>
+
             </div>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- ===== PROJECTS ===== -->
+
+  <!-- ================= PROJECTS ================= -->
   <section class="projects" id="projects">
+
     <div class="container">
+
       <div class="section-head">
-        <p class="label">Portfolio</p>
-        <h2>My Projects</h2>
+
+        <p class="label">
+          Portfolio
+        </p>
+
+        <h2>
+          My Projects
+        </h2>
+
       </div>
+
 
       <div class="projects-grid">
 
-        <!-- Card 1 -->
+
+        <!-- ================= PROJECT 1 ================= -->
         <div class="pcard">
+
           <div class="pcard-top rental">
-            <div class="pcard-icon"><i class="fas fa-home"></i></div>
-            <div class="pcard-num">01</div>
+
+            <div class="pcard-icon">
+              <i class="fas fa-home"></i>
+            </div>
+
+            <div class="pcard-num">
+              01
+            </div>
+
           </div>
+
+
           <div class="pcard-body">
-            <h3>Rental Management &amp; Housing Marketplace</h3>
-            <p>Web-based housing platform for searching rentals, viewing properties, contacting owners, and managing listings online.</p>
+
+            <h3>
+              Rental Management &amp;
+              Housing Marketplace
+            </h3>
+
+            <p>
+              Web-based housing platform for searching rentals,
+              viewing properties, contacting owners, and managing
+              listings online.
+            </p>
+
+
             <div class="ptechs">
-              <span class="pt react">React</span>
-              <span class="pt node">Node.js</span>
-              <span class="pt express">Express</span>
-              <span class="pt mysql">MySQL</span>
+
+              <span class="pt react">
+                React
+              </span>
+
+              <span class="pt node">
+                Node.js
+              </span>
+
+              <span class="pt express">
+                Express
+              </span>
+
+              <span class="pt mysql">
+                MySQL
+              </span>
+
             </div>
+
+
             <div class="pfeatures">
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> House search</span>
-                <span><i class="fas fa-check"></i> Property listings</span>
-                <span><i class="fas fa-check"></i> Rental requests</span>
-                <span><i class="fas fa-check"></i> User auth</span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  House search
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Property listings
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Rental requests
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  User auth
+                </span>
+
               </div>
+
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> Owner dashboard</span>
-                <span><i class="fas fa-check"></i> Photo gallery</span>
-                <span class="pf-planned"><i class="fas fa-clock"></i> ID verify <em>Planned</em></span>
-                <span class="pf-planned"><i class="fas fa-clock"></i> Payments <em>Planned</em></span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Owner dashboard
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Photo gallery
+                </span>
+
+                <span class="pf-planned">
+                  <i class="fas fa-clock"></i>
+                  ID verify
+                  <em>Planned</em>
+                </span>
+
+                <span class="pf-planned">
+                  <i class="fas fa-clock"></i>
+                  Payments
+                  <em>Planned</em>
+                </span>
+
               </div>
+
             </div>
+
+
             <div class="pcard-btns">
-              <a class="btn btn-sm btn-dark disabled" aria-disabled="true" title="Not yet available"><i class="fab fa-github"></i> GitHub</a>
-              <a class="btn btn-sm btn-accent disabled" aria-disabled="true" title="Not yet available"><i class="fas fa-rocket"></i> Live Demo</a>
+
+              <a
+                class="btn btn-sm btn-dark disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+
+              <a
+                class="btn btn-sm btn-accent disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fas fa-rocket"></i>
+                Live Demo
+              </a>
+
             </div>
+
           </div>
+
         </div>
 
-        <!-- Card 2 -->
+
+        <!-- ================= PROJECT 2 ================= -->
         <div class="pcard">
+
           <div class="pcard-top school">
-            <div class="pcard-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="pcard-num">02</div>
+
+            <div class="pcard-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+
+            <div class="pcard-num">
+              02
+            </div>
+
           </div>
+
+
           <div class="pcard-body">
-            <h3>Gimbi Adventist Health School Management System</h3>
-            <p>Digital school management system handling students, teachers, attendance, exams, marks, and payments.</p>
+
+            <h3>
+              Gimbi Adventist Health School
+              Management System
+            </h3>
+
+            <p>
+              Digital school management system handling students,
+              teachers, attendance, exams, marks, and payments.
+            </p>
+
+
             <div class="ptechs">
-              <span class="pt react">React</span>
-              <span class="pt node">Node.js</span>
-              <span class="pt php">PHP</span>
-              <span class="pt mysql">MySQL</span>
+
+              <span class="pt react">
+                React
+              </span>
+
+              <span class="pt node">
+                Node.js
+              </span>
+
+              <span class="pt php">
+                PHP
+              </span>
+
+              <span class="pt mysql">
+                MySQL
+              </span>
+
             </div>
+
+
             <div class="pfeatures">
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> Student registration</span>
-                <span><i class="fas fa-check"></i> Admin dashboard</span>
-                <span><i class="fas fa-check"></i> Attendance</span>
-                <span><i class="fas fa-check"></i> Marks &amp; grading</span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Student registration
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Admin dashboard
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Attendance
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Marks &amp; grading
+                </span>
+
               </div>
+
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> Online exams</span>
-                <span><i class="fas fa-check"></i> Payment &amp; receipts</span>
-                <span><i class="fas fa-check"></i> Teacher dashboard</span>
-                <span><i class="fas fa-check"></i> Authentication</span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Online exams
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Payment &amp; receipts
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Teacher dashboard
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Authentication
+                </span>
+
               </div>
+
             </div>
+
+
             <div class="pcard-btns">
-              <a class="btn btn-sm btn-dark disabled" aria-disabled="true" title="Not yet available"><i class="fab fa-github"></i> GitHub</a>
-              <a class="btn btn-sm btn-accent disabled" aria-disabled="true" title="Not yet available"><i class="fas fa-rocket"></i> Live Demo</a>
+
+              <a
+                class="btn btn-sm btn-dark disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+
+              <a
+                class="btn btn-sm btn-accent disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fas fa-rocket"></i>
+                Live Demo
+              </a>
+
             </div>
+
           </div>
+
         </div>
 
-        <!-- Card 3 -->
+
+        <!-- ================= PROJECT 3 ================= -->
         <div class="pcard">
+
           <div class="pcard-top clinic">
-            <div class="pcard-icon"><i class="fas fa-hospital-alt"></i></div>
-            <div class="pcard-num">03</div>
+
+            <div class="pcard-icon">
+              <i class="fas fa-hospital-alt"></i>
+            </div>
+
+            <div class="pcard-num">
+              03
+            </div>
+
           </div>
+
+
           <div class="pcard-body">
-            <h3>Harme Medium Clinic Web System</h3>
-            <p>Modern clinic management website helping patients access services and supporting digital management of clinic operations.</p>
+
+            <h3>
+              Harme Medium Clinic Web System
+            </h3>
+
+            <p>
+              Modern clinic management website helping patients
+              access services and supporting digital management
+              of clinic operations.
+            </p>
+
+
             <div class="ptechs">
-              <span class="pt react">React</span>
-              <span class="pt node">Node.js</span>
-              <span class="pt express">Express</span>
-              <span class="pt mysql">MySQL</span>
+
+              <span class="pt react">
+                React
+              </span>
+
+              <span class="pt node">
+                Node.js
+              </span>
+
+              <span class="pt express">
+                Express
+              </span>
+
+              <span class="pt mysql">
+                MySQL
+              </span>
+
             </div>
+
+
             <div class="pfeatures">
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> Clinic information</span>
-                <span><i class="fas fa-check"></i> Patient registration</span>
-                <span><i class="fas fa-check"></i> Appointment requests</span>
-                <span><i class="fas fa-check"></i> Contact form</span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Clinic information
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Patient registration
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Appointment requests
+                </span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Contact form
+                </span>
+
               </div>
+
+
               <div class="pf-col">
-                <span><i class="fas fa-check"></i> Responsive design</span>
-                <span class="pf-planned"><i class="fas fa-clock"></i> Staff info <em>Planned</em></span>
-                <span class="pf-planned"><i class="fas fa-clock"></i> Admin panel <em>Planned</em></span>
-                <span class="pf-planned"><i class="fas fa-clock"></i> Departments <em>Planned</em></span>
+
+                <span>
+                  <i class="fas fa-check"></i>
+                  Responsive design
+                </span>
+
+                <span class="pf-planned">
+                  <i class="fas fa-clock"></i>
+                  Staff info
+                  <em>Planned</em>
+                </span>
+
+                <span class="pf-planned">
+                  <i class="fas fa-clock"></i>
+                  Admin panel
+                  <em>Planned</em>
+                </span>
+
+                <span class="pf-planned">
+                  <i class="fas fa-clock"></i>
+                  Departments
+                  <em>Planned</em>
+                </span>
+
               </div>
+
             </div>
+
+
             <div class="pcard-btns">
-              <a class="btn btn-sm btn-dark disabled" aria-disabled="true" title="Not yet available"><i class="fab fa-github"></i> GitHub</a>
-              <a class="btn btn-sm btn-accent disabled" aria-disabled="true" title="Not yet available"><i class="fas fa-rocket"></i> Live Demo</a>
+
+              <a
+                class="btn btn-sm btn-dark disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+
+              <a
+                class="btn btn-sm btn-accent disabled"
+                aria-disabled="true"
+                title="Not yet available"
+              >
+                <i class="fas fa-rocket"></i>
+                Live Demo
+              </a>
+
             </div>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- ===== CONTACT ===== -->
+
+  <!-- ================= CONTACT ================= -->
   <section class="contact" id="contact">
+
     <div class="container">
+
       <div class="contact-grid">
 
         <div class="contact-left">
-          <p class="label">Contact</p>
-          <h2>Let's Build<br />Something.</h2>
-          <p>Have a project in mind or want to collaborate? I'm open to new opportunities and ideas.</p>
+
+          <p class="label">
+            Contact
+          </p>
+
+          <h2>
+            Let's Build
+            <br />
+            Something.
+          </h2>
+
+          <p>
+            Have a project in mind or want to collaborate?
+            I'm open to internship opportunities,
+            new opportunities and ideas.
+          </p>
+
+
           <div class="contact-links">
-            <a href="mailto:josephgebisa933@gmail.com" class="c-link">
+
+            <a
+              href="mailto:josephgebisa933@gmail.com"
+              class="c-link"
+            >
               <i class="fas fa-envelope"></i>
-              <span>josephgebisa933@gmail.com</span>
+
+              <span>
+                josephgebisa933@gmail.com
+              </span>
             </a>
-            <a href="https://github.com/josephgebisa933-ship-it" target="_blank" rel="noopener" class="c-link">
+
+
+            <a
+              href="https://github.com/josephgebisa933-ship-it"
+              target="_blank"
+              rel="noopener"
+              class="c-link"
+            >
               <i class="fab fa-github"></i>
-              <span>github.com/josephgebisa933-ship-it</span>
+
+              <span>
+                github.com/josephgebisa933-ship-it
+              </span>
             </a>
-            <a href="#" class="c-link">
+
+
+            <div class="c-link">
               <i class="fas fa-map-marker-alt"></i>
-              <span>Ethiopia</span>
-            </a>
+
+              <span>
+                Ethiopia
+              </span>
+            </div>
+
           </div>
+
         </div>
 
-        <form class="contact-form" id="contact-form">
+
+        <!-- Contact Form -->
+        <form
+          class="contact-form"
+          id="contact-form"
+        >
+
           <div class="form-row">
+
             <div class="fg">
-              <input type="text" name="name" placeholder="Name" required />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+              />
             </div>
+
             <div class="fg">
-              <input type="email" name="email" placeholder="Email" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
             </div>
+
           </div>
+
+
           <div class="fg">
-            <input type="text" name="subject" placeholder="Subject" required />
+
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              required
+            />
+
           </div>
+
+
           <div class="fg">
-            <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
+
+            <textarea
+              name="message"
+              placeholder="Your message..."
+              rows="5"
+              required
+            ></textarea>
+
           </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <i class="fas fa-paper-plane"></i> Send Message
+
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-full"
+          >
+            <i class="fas fa-paper-plane"></i>
+            Send Message
           </button>
+
         </form>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- ===== FOOTER ===== -->
+
+  <!-- ================= FOOTER ================= -->
   <footer class="footer">
+
     <div class="container">
+
       <div class="footer-inner">
-        <span class="footer-logo">YG<span>.</span></span>
-        <p>&copy; 2026 Yosef Gebisa. All rights reserved.</p>
+
+        <span class="footer-logo">
+          YG<span>.</span>
+        </span>
+
+        <p>
+          &copy; 2026 Yosef Gebisa.
+          All rights reserved.
+        </p>
+
         <div class="footer-nav">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+
+          <a href="#home">
+            Home
+          </a>
+
+          <a href="#about">
+            About
+          </a>
+
+          <a href="#projects">
+            Projects
+          </a>
+
+          <a href="#contact">
+            Contact
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
   </footer>
 
+
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
+
 </body>
 </html>
